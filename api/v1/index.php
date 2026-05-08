@@ -472,7 +472,7 @@ switch (true) {
     case $path === 'notifications' && $method === 'GET':
         requireAuthApi();
         $notifs = DB::query('SELECT * FROM notifications WHERE user_id=? ORDER BY created_at DESC LIMIT 30', [(int)$user['id']]);
-        DB::exec('UPDATE notifications SET is_read=1 WHERE user_id=? AND is_read=0', [(int)$user['id']]);
+        // DB::exec('UPDATE notifications SET is_read=1 WHERE user_id=? AND is_read=0', [(int)$user['id']]);
         jsonResponse(['notifications'=>$notifs]);
 
     // ── FOLLOW / UNFOLLOW ────────────────────────────

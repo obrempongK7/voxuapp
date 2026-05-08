@@ -34,8 +34,14 @@ try {
     $unread = DB::count('notifications','user_id=? AND is_read=0',[$userId]);
 } catch(Throwable){ $notifs=[]; $total=0; $unread=0; }
 
-// Mark all as read on page load
-try { DB::exec("UPDATE notifications SET is_read=1 WHERE user_id=?",[$userId]); } catch(Throwable){}
+// Mark fetched items as read to prevent unread dot from persisting indefinitely without auto-read everything on page load
+try {
+    if (!empty($notifs)) {
+        $notifIds = array_column($notifs, 'id');
+        $in = str_repeat('?,', count($notifIds) - 1) . '?';
+        DB::exec("UPDATE notifications SET is_read=1 WHERE id IN ($in)", $notifIds);
+    }
+} catch(Throwable){}
 
 $NOTIF_ICONS = [
     'reply'          => ['💬','var(--blue-l)'],
