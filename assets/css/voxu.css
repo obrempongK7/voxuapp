@@ -5,21 +5,21 @@
 
 /* ── TOKENS ──────────────────────────────────────────── */
 :root {
-  --purple:#6C3BFF;--purple-d:#5228DD;--purple-l:rgba(108,59,255,.12);
+  --purple:#6347eb;--purple-d:#4d36b8;--purple-l:rgba(99,71,235,.12);
   --blue:#00D1FF;--blue-l:rgba(0,209,255,.12);
   --green:#00C97C;--green-l:rgba(0,201,124,.12);
   --danger:#FF4444;--danger-l:rgba(255,68,68,.12);
   --warning:#FFB830;--warning-l:rgba(255,184,48,.12);
-  --grad-main:linear-gradient(135deg,#6C3BFF 0%,#00D1FF 100%);
+  --grad-main:linear-gradient(135deg,#6347eb 0%,#00D1FF 100%);
   --grad-cover:linear-gradient(135deg,#1a1a2e 0%,#16213e 50%,#0f3460 100%);
-  --bg:#0D0D14;--bg2:#161620;--bg3:#1C1C2A;--card:#181825;
-  --text:#F0F0FF;--text2:#9090AA;--text3:#55556A;
-  --border:rgba(255,255,255,.07);--border2:rgba(255,255,255,.13);
+  --bg:#0b0a16;--bg2:#141228;--bg3:#181532;--card:#1a1738;
+  --text:#ffffff;--text2:#b3aeff;--text3:#8880e6;
+  --border:rgba(99,71,235,.2);--border2:rgba(99,71,235,.3);
   --shadow:0 2px 16px rgba(0,0,0,.35);--shadow-lg:0 8px 40px rgba(0,0,0,.45);
   --glow-p:0 0 24px rgba(108,59,255,.35);
   --glass:rgba(22,22,32,.82);--glass-border:rgba(255,255,255,.07);--glass-hover:rgba(255,255,255,.04);
   --nav-h:60px;--bottom-h:58px;--sidebar-w:260px;--aside-w:300px;--feed-max:640px;
-  --radius:14px;--radius-sm:8px;--radius-lg:20px;--radius-xl:28px;
+  --radius:12px;--radius-sm:8px;--radius-lg:16px;--radius-xl:20px;
   --transition:.2s cubic-bezier(.4,0,.2,1);
 }
 body.theme-light {
@@ -43,7 +43,7 @@ body.theme-light .input,body.theme-light .form-input,body.theme-light select{col
 /* ── RESET ───────────────────────────────────────────── */
 *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
 html{scroll-behavior:smooth}
-body{font-family:'Inter',-apple-system,BlinkMacSystemFont,sans-serif;background:var(--bg);color:var(--text);line-height:1.6;min-height:100vh;-webkit-font-smoothing:antialiased}
+body{font-family:'Plus Jakarta Sans',-apple-system,BlinkMacSystemFont,sans-serif;background:var(--bg);color:var(--text);line-height:1.6;min-height:100vh;-webkit-font-smoothing:antialiased}
 a{text-decoration:none;color:inherit}
 img{max-width:100%;display:block}
 button,input,select,textarea{font-family:inherit}
