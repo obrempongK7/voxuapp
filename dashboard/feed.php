@@ -172,7 +172,8 @@ $boostTiers = [
         ['/dashboard/status.php','status-icon','Status','status',0,0],
         ['/dashboard/wallet.php','wallet-icon','Wallet','wallet',0,0],
         ['/dashboard/profile.php','profile-icon','Profile','profile',0,0],
-        ['/dashboard/premium.php','star-icon','Premium','premium',0,1],
+                ['/dashboard/premium.php','star-icon','Premium','premium',0,1],
+        ['/dashboard/create_ad.php','ad-icon','Create Ad','create_ad',0,0],
       ];
       $icons = [
         'home-icon'  =>'<path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/>',
@@ -182,7 +183,8 @@ $boostTiers = [
         'status-icon'=>'<rect x="2" y="3" width="20" height="14" rx="2"/><line x1="8" y1="21" x2="16" y2="21"/>',
         'wallet-icon'=>'<rect x="2" y="5" width="20" height="14" rx="2"/><line x1="2" y1="10" x2="22" y2="10"/>',
         'profile-icon'=>'<path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/>',
-        'star-icon'  =>'<polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/>',
+                'star-icon'  =>'<polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/>',
+        'ad-icon'    =>'<rect x="2" y="3" width="20" height="14" rx="2" ry="2"/><line x1="8" y1="21" x2="16" y2="21"/><line x1="12" y1="17" x2="12" y2="21"/>',
       ];
       foreach($navItems as [$href,$ikey,$label,$key,$badge,$isPremium]):
         $isActive = strpos($_SERVER['REQUEST_URI']??'', $href)===0;
