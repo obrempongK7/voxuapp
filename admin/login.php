@@ -2,9 +2,6 @@
 /**
  * @author  Jcode | ObrempongK
  * Voxu — Admin Login
- * FIX: Removed manual session_start() that fired before config.php set
- *      session_name('voxu_sess'). This caused admin_id to be stored in
- *      PHPSESSID while all other admin pages read from voxu_sess → loop.
  */
 require_once __DIR__ . '/../config.php';
 require_once __DIR__ . '/../includes/db.php';
