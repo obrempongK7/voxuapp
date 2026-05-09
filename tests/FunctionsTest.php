@@ -49,6 +49,11 @@ class FunctionsTest {
     public function testFormatPoints() {
         SimpleTestRunner::assertEquals('1,000 pts', formatPoints(1000));
         SimpleTestRunner::assertEquals('0 pts', formatPoints(0));
+        SimpleTestRunner::assertEquals('-1,000 pts', formatPoints(-1000));
+        SimpleTestRunner::assertEquals('1 pts', formatPoints(1));
+        SimpleTestRunner::assertEquals('1,000,000 pts', formatPoints(1000000));
+        SimpleTestRunner::assertEquals(number_format(PHP_INT_MAX) . ' pts', formatPoints(PHP_INT_MAX));
+        SimpleTestRunner::assertEquals(number_format(PHP_INT_MIN) . ' pts', formatPoints(PHP_INT_MIN));
     }
 
     public function testFormatDuration() {
