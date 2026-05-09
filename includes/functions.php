@@ -907,9 +907,17 @@ function socialLogin(string $provider, string $providerId, string $email, string
             $username = strtolower(preg_replace('/[^a-zA-Z0-9_]/', '', str_replace(' ', '_', $name)));
             $username = $username ?: 'user' . rand(1000, 9999);
             // Ensure unique username
-            $base = $username; $n = 1;
-            while (DB::count('users', 'username=?', [$username]) > 0) {
-                $username = $base . $n++;
+            $base = $username;
+            $escapedBase = addcslashes($base, '%_');
+            $usersWithPrefix = DB::query("SELECT username FROM users WHERE username LIKE ?", [$escapedBase . '%']);
+            $existing = array_column($usersWithPrefix, 'username');
+
+            if (in_array($username, $existing)) {
+                $n = 1;
+                while (in_array($base . $n, $existing)) {
+                    $n++;
+                }
+                $username = $base . $n;
             }
             $uid = DB::insert('users', [
                 'username'    => $username,
