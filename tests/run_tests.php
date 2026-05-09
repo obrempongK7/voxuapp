@@ -16,7 +16,12 @@ define('SESSION_LIFE', 86400 * 30);
 
 require_once __DIR__ . '/SimpleTestRunner.php';
 
-$runner = new SimpleTestRunner(__DIR__ . '/FunctionsTest.php');
-$success = $runner->run();
+$success = true;
+
+$runnerFunctions = new SimpleTestRunner(__DIR__ . '/FunctionsTest.php');
+$success = $runnerFunctions->run() && $success;
+
+$runnerSecurity = new SimpleTestRunner(__DIR__ . '/SecurityTest.php');
+$success = $runnerSecurity->run() && $success;
 
 exit($success ? 0 : 1);
