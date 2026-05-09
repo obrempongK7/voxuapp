@@ -13,6 +13,13 @@ class FunctionsTest {
     public function testSanitize() {
         SimpleTestRunner::assertEquals('alert(1)', sanitize('<script>alert(1)</script>'));
         SimpleTestRunner::assertEquals('Hello World', sanitize('  <b>Hello</b> <i>World</i>  '));
+        SimpleTestRunner::assertEquals('', sanitize(null));
+        SimpleTestRunner::assertEquals('123', sanitize(123));
+        SimpleTestRunner::assertEquals('12.34', sanitize(12.34));
+        SimpleTestRunner::assertEquals('1', sanitize(true));
+        SimpleTestRunner::assertEquals('', sanitize(false));
+        SimpleTestRunner::assertEquals('', sanitize("   \n\t  "));
+        SimpleTestRunner::assertEquals('Link', sanitize('<a href="test">Link</a>'));
     }
 
     public function testSanitizeUrl() {
