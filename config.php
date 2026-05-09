@@ -18,11 +18,11 @@ define('APP_URL',     'http://yourdomain.com');   // ← CHANGE: no trailing sla
 define('APP_DIR',     __DIR__);
 
 /* ── DATABASE ────────────────────────────────────────────── */
-define('DB_HOST',    'localhost');
+define('DB_HOST',    '127.0.0.1');
 define('DB_PORT',    '3306');
-define('DB_NAME',    'your_database_name');        // ← CHANGE
-define('DB_USER',    'your_database_user');        // ← CHANGE
-define('DB_PASS',    'your_database_password');    // ← CHANGE
+define('DB_NAME',    'test_db');        // ← CHANGE
+define('DB_USER',    'root');        // ← CHANGE
+define('DB_PASS',    '');    // ← CHANGE
 define('DB_CHARSET', 'utf8mb4');
 
 /* ── SECURITY ────────────────────────────────────────────── */

@@ -27,19 +27,18 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             $error = 'Message is required.';
         } else {
             // Get target users
-            if ($targetGroup === 'all') {
-                $users = DB::query('SELECT id FROM users WHERE status="active"');
-            } elseif ($targetGroup === 'new') {
-                $users = DB::query('SELECT id FROM users WHERE status="active" AND created_at >= DATE_SUB(NOW(), INTERVAL 7 DAY)');
-            } elseif ($targetGroup === 'active_week') {
-                $users = DB::query('SELECT id FROM users WHERE status="active" AND last_login >= DATE_SUB(NOW(), INTERVAL 7 DAY)');
-            } else {
-                $users = [];
-            }
             $count = 0;
-            foreach ($users as $u) {
-                createNotification((int)$u['id'], $type, $message);
-                $count++;
+            $now = date('Y-m-d H:i:s');
+            $baseSql = "INSERT INTO notifications (user_id, type, message, is_read, created_at) ";
+            $selectBase = "SELECT id, ?, ?, 0, ? FROM users WHERE status='active'";
+            $params = [$type, $message, $now];
+
+            if ($targetGroup === 'all') {
+                $count = DB::exec($baseSql . $selectBase, $params);
+            } elseif ($targetGroup === 'new') {
+                $count = DB::exec($baseSql . $selectBase . " AND created_at >= DATE_SUB(NOW(), INTERVAL 7 DAY)", $params);
+            } elseif ($targetGroup === 'active_week') {
+                $count = DB::exec($baseSql . $selectBase . " AND last_login >= DATE_SUB(NOW(), INTERVAL 7 DAY)", $params);
             }
             logAdminAction((int)$admin['id'], 'broadcast_sent', "Sent broadcast to {$count} users: {$message}");
             $success = "Announcement sent to {$count} users.";
