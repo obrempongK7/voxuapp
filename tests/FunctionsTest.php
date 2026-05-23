@@ -8,6 +8,13 @@ class FunctionsTest {
         SimpleTestRunner::assertEquals('&lt;script&gt;alert(1)&lt;/script&gt;', clean('<script>alert(1)</script>'));
         SimpleTestRunner::assertEquals('Hello World', clean('  Hello World  '));
         SimpleTestRunner::assertEquals('&quot;quoted&quot;', clean('"quoted"'));
+        SimpleTestRunner::assertEquals('&#039;single quotes&#039;', clean("'single quotes'"));
+        SimpleTestRunner::assertEquals('a &amp; b', clean('a & b'));
+        SimpleTestRunner::assertEquals('123', clean(123));
+        SimpleTestRunner::assertEquals('12.34', clean(12.34));
+        SimpleTestRunner::assertEquals('1', clean(true));
+        SimpleTestRunner::assertEquals('', clean(false));
+        SimpleTestRunner::assertEquals('', clean(null));
     }
 
     public function testSanitize() {
